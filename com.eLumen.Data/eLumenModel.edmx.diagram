@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8289589cc9d4b338b16475d3495463c" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="elumenModel.asmt" Width="1.5" PointX="2.125" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.asmt_mastery_level" Width="1.5" PointX="7.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.asmt_perf_description" Width="1.5" PointX="9.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.asmt_perf_ds_default" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.asmt_rubric_type" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.asmt_scale" Width="1.5" PointX="7.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.asmt_score_level" Width="1.5" PointX="9.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.asmt_slo_criteria" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.new_course" Width="1.5" PointX="4.625" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.slo" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.slo_asmt_scale" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.slo_category" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elumenModel.slo_class" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="elumenModel.fk_asmt_at_asmt" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_dist_source_asmt_id" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_previous_asmt" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_score_level_asmt_mastery_level1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_perf_description_asmt_score_level1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_perf_description_asmt_slo_criteria1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_perf_ds_default_asmt_score_level_id" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_perf_ds_default_slo_id" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_score_level_asmt_scale1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_asmt_slo_criteria_slo1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_new_course_at_new_course" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_new_course_previous_new_course" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.slo_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_slo_at_slo" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_slo_previous_slo" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_SLO_SLO_CATEGORY1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_SLO_CATEGORY_SLO_CATEGORY1" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.fk_slo_category_slo_class" ManuallyRouted="false" />
+        <AssociationConnector Association="elumenModel.asmt_slo_rel" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="elumenModel.credential" Width="1.5" PointX="12.375" PointY="1.125" />
+        <AssociationConnector Association="elumenModel.fk_credential_at_credential" />
+        <AssociationConnector Association="elumenModel.fk_credential_previous_credential" />
+        <AssociationConnector Association="elumenModel.fk_slo_class_owner_credential" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B29D5F2C-9563-4297-AE5E-23E4238ED91B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DD93DE1F-A63F-4704-9E03-5E20D18CA002}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.eLumen.Competency.Web", "src\com.eLumen.Competency.Web\com.eLumen.Competency.Web.csproj", "{B27A93CC-B3D9-4F9F-935C-FF12613D80DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.eLumen.Data", "com.eLumen.Data\com.eLumen.Data.csproj", "{38ED9D05-FC5B-423F-8422-C9D8C10D401B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.eLumen.Standard.Web", "com.eLumen.Standard.Web\com.eLumen.Standard.Web.csproj", "{FEF45C37-25ED-4C6C-8CF1-AD35F5E9B852}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.eLumen.Competency.Data", "src\com.eLumen.Competency.Data\com.eLumen.Competency.Data.csproj", "{9D932FFA-1AAF-4596-A3DB-5290A0AB31D0}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MRFLSC", "..\..\..\..\Source\Repos\MRFLSC\", "{9CE5D8DA-7A91-409E-B1DF-9B1C91B48A25}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_56427"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Source\Repos\MRFLSC\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56427\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_56427"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\Source\Repos\MRFLSC\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56427\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "56427"
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "com.eLumen.CF.Web", "com.Elumen.CF\com.eLumen.CF.Web.xproj", "{E725721D-5E3E-4E34-BCEB-A7B34CF62057}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.eLumen.CF.Service", "com.eLumen.CF.Service\com.eLumen.CF.Service.csproj", "{EBCBB604-DD3F-4B05-B28E-BC3633B0A7D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B27A93CC-B3D9-4F9F-935C-FF12613D80DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B27A93CC-B3D9-4F9F-935C-FF12613D80DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B27A93CC-B3D9-4F9F-935C-FF12613D80DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B27A93CC-B3D9-4F9F-935C-FF12613D80DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38ED9D05-FC5B-423F-8422-C9D8C10D401B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38ED9D05-FC5B-423F-8422-C9D8C10D401B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38ED9D05-FC5B-423F-8422-C9D8C10D401B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38ED9D05-FC5B-423F-8422-C9D8C10D401B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF45C37-25ED-4C6C-8CF1-AD35F5E9B852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF45C37-25ED-4C6C-8CF1-AD35F5E9B852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF45C37-25ED-4C6C-8CF1-AD35F5E9B852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF45C37-25ED-4C6C-8CF1-AD35F5E9B852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D932FFA-1AAF-4596-A3DB-5290A0AB31D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D932FFA-1AAF-4596-A3DB-5290A0AB31D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D932FFA-1AAF-4596-A3DB-5290A0AB31D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D932FFA-1AAF-4596-A3DB-5290A0AB31D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE5D8DA-7A91-409E-B1DF-9B1C91B48A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE5D8DA-7A91-409E-B1DF-9B1C91B48A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE5D8DA-7A91-409E-B1DF-9B1C91B48A25}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE5D8DA-7A91-409E-B1DF-9B1C91B48A25}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{E725721D-5E3E-4E34-BCEB-A7B34CF62057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E725721D-5E3E-4E34-BCEB-A7B34CF62057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E725721D-5E3E-4E34-BCEB-A7B34CF62057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E725721D-5E3E-4E34-BCEB-A7B34CF62057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCBB604-DD3F-4B05-B28E-BC3633B0A7D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCBB604-DD3F-4B05-B28E-BC3633B0A7D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCBB604-DD3F-4B05-B28E-BC3633B0A7D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCBB604-DD3F-4B05-B28E-BC3633B0A7D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B27A93CC-B3D9-4F9F-935C-FF12613D80DE} = {B29D5F2C-9563-4297-AE5E-23E4238ED91B}
+		{38ED9D05-FC5B-423F-8422-C9D8C10D401B} = {B29D5F2C-9563-4297-AE5E-23E4238ED91B}
+		{FEF45C37-25ED-4C6C-8CF1-AD35F5E9B852} = {B29D5F2C-9563-4297-AE5E-23E4238ED91B}
+		{9D932FFA-1AAF-4596-A3DB-5290A0AB31D0} = {B29D5F2C-9563-4297-AE5E-23E4238ED91B}
+		{E725721D-5E3E-4E34-BCEB-A7B34CF62057} = {B29D5F2C-9563-4297-AE5E-23E4238ED91B}
+		{EBCBB604-DD3F-4B05-B28E-BC3633B0A7D4} = {B29D5F2C-9563-4297-AE5E-23E4238ED91B}
+	EndGlobalSection
+EndGlobal

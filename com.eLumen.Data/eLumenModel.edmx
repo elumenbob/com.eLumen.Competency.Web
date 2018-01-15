@@ -1,0 +1,2027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="elumenModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="asmt">
+          <Key>
+            <PropertyRef Name="asmt_id" />
+          </Key>
+          <Property Name="asmt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asmt_atid" Type="int" />
+          <Property Name="previous_asmt_id" Type="int" />
+          <Property Name="current_flag" Type="tinyint" />
+          <Property Name="is_latest" Type="tinyint" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="is_shared" Type="bit" Nullable="false" />
+          <Property Name="new_activity_ds" Type="varchar" MaxLength="4000" />
+          <Property Name="new_activity_type_id" Type="int" />
+          <Property Name="for_library" Type="bit" />
+          <Property Name="_makeMeCollective" Type="bool" />
+          <Property Name="_was_unused_sa" Type="bool" />
+          <Property Name="_src_sa_id" Type="int" />
+          <Property Name="_src_pa_id" Type="int" />
+          <Property Name="new_activity_name" Type="varchar" MaxLength="4000" />
+          <Property Name="activity_specified" Type="int" />
+          <Property Name="score_type" Type="enum" />
+          <Property Name="scard_view" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="rub_view" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="4000" />
+          <Property Name="activity_specified_ds" Type="varchar" MaxLength="4000" />
+          <Property Name="dist_source_asmt_id" Type="int" />
+          <Property Name="status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="is_deleted" Type="tinyint" Nullable="false" />
+          <Property Name="enable_activity" Type="char" MaxLength="1" />
+          <Property Name="default_distribution_id" Type="int" />
+          <Property Name="current_version" Type="int" />
+          <Property Name="student_self_asmt_enabled" Type="char" MaxLength="1" />
+          <Property Name="is_dla" Type="char" MaxLength="1" />
+          <Property Name="use_activity_benchmark" Type="int" />
+          <Property Name="passing_score" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="cascade_status" Type="bool" Nullable="false" />
+          <Property Name="disabled_by_scoring_setting" Type="int" Nullable="false" />
+          <Property Name="sloList" Type="varchar" MaxLength="512" />
+          <Property Name="sloCount" Type="int" />
+          <Property Name="is_portfolio" Type="bool" Nullable="false" />
+          <Property Name="portfolio_template_id" Type="int" />
+          <Property Name="is_multi_rater" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="is_allow_annotations" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="asmt_mastery_level">
+          <Key>
+            <PropertyRef Name="asmt_mastery_level_id" />
+          </Key>
+          <Property Name="asmt_mastery_level_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ds" Type="varchar" MaxLength="2000" />
+          <Property Name="display_seq" Type="int" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" />
+          <Property Name="not_applicable" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="_src_scale_lvl_id" Type="int" />
+        </EntityType>
+        <EntityType Name="asmt_perf_description">
+          <Key>
+            <PropertyRef Name="asmt_perf_description_id" />
+          </Key>
+          <Property Name="asmt_perf_description_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="asmt_score_level_id" Type="int" Nullable="false" />
+          <Property Name="asmt_criteria_id" Type="int" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="asmt_slo_criteria_id" Type="int" />
+          <Property Name="_was_unused_sa" Type="bool" />
+        </EntityType>
+        <EntityType Name="asmt_perf_ds_default">
+          <Key>
+            <PropertyRef Name="asmt_perf_ds_default_id" />
+          </Key>
+          <Property Name="asmt_perf_ds_default_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="asmt_score_level_id" Type="int" Nullable="false" />
+          <Property Name="slo_id" Type="int" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="asmt_rubric_type">
+          <Key>
+            <PropertyRef Name="asmt_rubric_type_id" />
+          </Key>
+          <Property Name="asmt_rubric_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ds" Type="varchar" MaxLength="2000" />
+          <Property Name="multiple_slo" Type="bit" Nullable="false" />
+          <Property Name="direct_slo_score" Type="bit" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="asmt_scale">
+          <Key>
+            <PropertyRef Name="asmt_scale_id" />
+          </Key>
+          <Property Name="asmt_scale_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cardinality" Type="int" Nullable="false" />
+          <Property Name="scale_type" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="top_number_scale" Type="int" />
+          <Property Name="rounding_method" Type="varchar" MaxLength="30" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="use_not_applicable" Type="char" MaxLength="1" />
+          <Property Name="enabled" Type="tinyint" Nullable="false" />
+          <Property Name="zero_based_scores" Type="enum" />
+          <Property Name="is_default" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="asmt_score_level">
+          <Key>
+            <PropertyRef Name="asmt_score_level_id" />
+          </Key>
+          <Property Name="asmt_score_level_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ds" Type="varchar" MaxLength="2000" />
+          <Property Name="value" Type="int" />
+          <Property Name="asmt_mastery_level_id" Type="int" />
+          <Property Name="points" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="asmt_scored_id" Type="int" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="asmt_scale_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" />
+          <Property Name="not_applicable" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="default_perf_ds" Type="varchar" MaxLength="2000" />
+          <Property Name="_src_scale_default_rubric_interp_id" Type="int" />
+        </EntityType>
+        <EntityType Name="asmt_slo_criteria">
+          <Key>
+            <PropertyRef Name="asmt_slo_criteria_id" />
+          </Key>
+          <Property Name="asmt_slo_criteria_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asmt_scored_id" Type="int" Nullable="false" />
+          <Property Name="slo_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="_src_scale_id" Type="int" />
+          <Property Name="_was_unused_sa" Type="bool" />
+        </EntityType>
+        <EntityType Name="asmt_slo_rel">
+          <Key>
+            <PropertyRef Name="asmt_id" />
+            <PropertyRef Name="slo_id" />
+          </Key>
+          <Property Name="asmt_id" Type="int" Nullable="false" />
+          <Property Name="slo_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="credential">
+          <Key>
+            <PropertyRef Name="credential_id" />
+          </Key>
+          <Property Name="credential_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="credential_atid" Type="int" />
+          <Property Name="previous_credential_id" Type="int" />
+          <Property Name="current_flag" Type="bool" />
+          <Property Name="is_latest" Type="tinyint" Nullable="false" />
+          <Property Name="starting_term_id" Type="int" />
+          <Property Name="credential_type_id" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="ds" Type="varchar" MaxLength="2000" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="active_flag" Type="int" />
+          <Property Name="org_entity_id" Type="int" />
+          <Property Name="transferability_id" Type="int" />
+          <Property Name="program_mode" Type="enum" />
+          <Property Name="_external_credential_id" Type="varchar" MaxLength="50" />
+          <Property Name="top_code" Type="char" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="new_course">
+          <Key>
+            <PropertyRef Name="new_course_id" />
+          </Key>
+          <Property Name="new_course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="new_course_atid" Type="int" />
+          <Property Name="previous_new_course_id" Type="int" />
+          <Property Name="current_flag" Type="tinyint" />
+          <Property Name="is_latest" Type="tinyint" Nullable="false" />
+          <Property Name="starting_term_id" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="short_title" Type="varchar" MaxLength="255" />
+          <Property Name="ds" Type="varchar" MaxLength="2000" />
+          <Property Name="recommended_enrollment" Type="int" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="org_entity_id" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="inactive_flag" Type="char" MaxLength="1" />
+          <Property Name="new_course_type_id" Type="int" />
+          <Property Name="num_credits" Type="varchar" MaxLength="50" />
+          <Property Name="eligible_for_audit" Type="tinyint" />
+          <Property Name="course_duration_minimum" Type="int" />
+          <Property Name="course_duration_maximum" Type="int" />
+          <Property Name="retake_policy" Type="int" />
+          <Property Name="retake_policy_description" Type="text" />
+          <Property Name="transferability_id" Type="int" />
+          <Property Name="comparable_course" Type="text" />
+          <Property Name="is_credit_by_exam" Type="tinyint" />
+          <Property Name="master_discipline_preferred_id" Type="int" />
+          <Property Name="alternate_master_discipline_id" Type="int" />
+          <Property Name="additional_non_master_discipline_id" Type="int" />
+          <Property Name="lecture_hours" Type="int" />
+          <Property Name="distance_ed_hours" Type="int" />
+          <Property Name="homework_hours" Type="int" />
+          <Property Name="work_based_learning_hours" Type="int" />
+          <Property Name="clinical_hours" Type="int" />
+          <Property Name="field_trip_hours" Type="int" />
+          <Property Name="lab_hours" Type="int" />
+          <Property Name="other_hours" Type="int" />
+          <Property Name="max_other_hours" Type="int" />
+          <Property Name="certifications" Type="varchar" MaxLength="2000" />
+          <Property Name="additional_master_discipline_id" Type="int" />
+          <Property Name="notes_for_students" Type="text" />
+          <Property Name="course_outline_free_text" Type="text" />
+          <Property Name="me_homework" Type="tinyint" />
+          <Property Name="me_tests" Type="tinyint" />
+          <Property Name="me_final_exam" Type="tinyint" />
+          <Property Name="me_project" Type="tinyint" />
+          <Property Name="me_participation" Type="tinyint" />
+          <Property Name="me_description" Type="text" />
+          <Property Name="equipment_needed" Type="text" />
+          <Property Name="methods_of_instruction" Type="text" />
+          <Property Name="out_of_class_assignments" Type="text" />
+          <Property Name="object_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="50" />
+          <Property Name="course_subject" Type="varchar" MaxLength="255" />
+          <Property Name="course_number" Type="varchar" MaxLength="255" />
+          <Property Name="course_suffix" Type="varchar" MaxLength="255" />
+          <Property Name="course_control_number" Type="varchar" MaxLength="255" />
+          <Property Name="old_course_id" Type="int" />
+          <Property Name="old_context_id" Type="int" />
+          <Property Name="_src_course_id" Type="int" />
+          <Property Name="_src_ssa_id" Type="int" />
+          <Property Name="has_coordinator" Type="int" />
+          <Property Name="coordinator_manage_courses" Type="int" />
+          <Property Name="coordinator_manage_evaluators" Type="int" />
+          <Property Name="coordinator_manage_collective" Type="int" />
+          <Property Name="top_code" Type="char" MaxLength="7" />
+          <Property Name="top_name" Type="text" />
+          <Property Name="cip_code" Type="char" MaxLength="7" />
+          <Property Name="cip_name" Type="text" />
+          <Property Name="sam_code_id" Type="int" />
+          <Property Name="was_shared" Type="int" />
+          <Property Name="max_lecture_hours" Type="int" />
+          <Property Name="max_lab_hours" Type="int" />
+          <Property Name="ttl_lecture_hours" Type="int" />
+          <Property Name="ttl_max_lecture_hours" Type="int" />
+          <Property Name="ttl_lab_hours" Type="int" />
+          <Property Name="ttl_max_lab_hours" Type="int" />
+          <Property Name="requested_start_semester" Type="varchar" MaxLength="8" />
+          <Property Name="requested_start_year" Type="varchar" MaxLength="4" />
+          <Property Name="uc_approval_semester" Type="varchar" MaxLength="8" />
+          <Property Name="uc_approval_year" Type="varchar" MaxLength="4" />
+          <Property Name="csu_approval_semester" Type="varchar" MaxLength="8" />
+          <Property Name="csu_approval_year" Type="varchar" MaxLength="4" />
+          <Property Name="csu_ge_approval_semester" Type="varchar" MaxLength="8" />
+          <Property Name="csu_ge_approval_year" Type="varchar" MaxLength="4" />
+          <Property Name="igetc_semester" Type="varchar" MaxLength="8" />
+          <Property Name="igetc_year" Type="varchar" MaxLength="4" />
+          <Property Name="is_comments" Type="varchar" MaxLength="128" />
+          <Property Name="history" Type="varchar" MaxLength="512" />
+          <Property Name="impact_cert_text" Type="varchar" MaxLength="256" />
+          <Property Name="impact_class_text" Type="varchar" MaxLength="512" />
+          <Property Name="advisory_committee_recommended" Type="bool" />
+          <Property Name="advisory_recommended_date" Type="date" />
+          <Property Name="field_trip_requirement" Type="bit" />
+          <Property Name="recommended_enrollment_justification" Type="varchar" MaxLength="512" />
+          <Property Name="retake_policy_justification" Type="varchar" MaxLength="512" />
+          <Property Name="starting_term_justification" Type="varchar" MaxLength="512" />
+          <Property Name="unit_hrs" Type="int" />
+          <Property Name="max_unit_hrs" Type="int" />
+          <Property Name="credit_hrs" Type="int" />
+          <Property Name="max_credit_hrs" Type="int" />
+          <Property Name="student_population" Type="varchar" MaxLength="512" />
+          <Property Name="course_workflow_json_history_id" Type="int" />
+          <Property Name="course_delivery_type" Type="enum" Nullable="false" />
+          <Property Name="max_num_credits" Type="int" />
+          <Property Name="min_num_credits" Type="int" />
+          <Property Name="cb12" Type="varchar" MaxLength="10" />
+          <Property Name="can_code" Type="varchar" MaxLength="50" />
+          <Property Name="can_seq_code" Type="varchar" MaxLength="50" />
+          <Property Name="cb16" Type="varchar" MaxLength="50" />
+          <Property Name="cb17" Type="varchar" MaxLength="50" />
+          <Property Name="cb18" Type="varchar" MaxLength="50" />
+          <Property Name="crosswalk_course_dept" Type="varchar" MaxLength="50" />
+          <Property Name="crosswalk_course_number" Type="varchar" MaxLength="50" />
+          <Property Name="time_for_review_quantity" Type="int" />
+          <Property Name="time_for_review_measure" Type="varchar" MaxLength="20" />
+          <Property Name="approved_date" Type="datetime" Precision="0" />
+          <Property Name="course_uuid" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="slo">
+          <Key>
+            <PropertyRef Name="slo_id" />
+          </Key>
+          <Property Name="slo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slo_atid" Type="int" />
+          <Property Name="previous_slo_id" Type="int" />
+          <Property Name="current_flag" Type="tinyint" />
+          <Property Name="is_latest" Type="tinyint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="2000" />
+          <Property Name="performance" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="starting_term_id" Type="int" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="owner_org_entity_id" Type="int" />
+          <Property Name="slo_type_id" Type="int" />
+          <Property Name="slo_outcome_level_id" Type="int" Nullable="false" />
+          <Property Name="slo_category_id" Type="int" />
+          <Property Name="new_course_id" Type="int" />
+          <Property Name="seq" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="_src_aa_id" Type="int" />
+          <Property Name="_src_ag_id" Type="int" />
+          <Property Name="_src_bmg_id" Type="int" />
+          <Property Name="_src_bm_id" Type="int" />
+          <Property Name="_src_bmc_id" Type="int" />
+          <Property Name="_src_ca_id" Type="int" />
+          <Property Name="_src_cip_id" Type="int" />
+        </EntityType>
+        <EntityType Name="slo_asmt_scale">
+          <Key>
+            <PropertyRef Name="slo_asmt_scale_id" />
+          </Key>
+          <Property Name="slo_asmt_scale_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="2000" />
+          <Property Name="code" Type="varchar" MaxLength="255" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="display_seq" Type="int" />
+        </EntityType>
+        <EntityType Name="slo_category">
+          <Key>
+            <PropertyRef Name="slo_category_id" />
+          </Key>
+          <Property Name="slo_category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="2000" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="owner_org_entity_id" Type="int" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="slo_outcome_level_id" Type="int" />
+          <Property Name="slo_class_id" Type="int" />
+          <Property Name="_src_bm_id" Type="int" />
+          <Property Name="seq" Type="int" />
+        </EntityType>
+        <EntityType Name="slo_class">
+          <Key>
+            <PropertyRef Name="slo_class_id" />
+          </Key>
+          <Property Name="slo_class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ds" Type="varchar" MaxLength="2000" />
+          <Property Name="mission_stm" Type="varchar" MaxLength="2000" />
+          <Property Name="org_entity_id" Type="int" Nullable="false" />
+          <Property Name="slo_outcome_level_id" Type="int" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="seq" Type="int" />
+          <Property Name="bool_cert_and_deg" Type="tinyint" />
+          <Property Name="bool_standards_body" Type="tinyint" />
+          <Property Name="standards_body_ds" Type="varchar" MaxLength="2000" />
+          <Property Name="use_category" Type="tinyint" Nullable="false" />
+          <Property Name="is_third_party_standard_set" Type="tinyint" />
+          <Property Name="is_gen_ed" Type="bool" />
+          <Property Name="owner_credential" Type="int" />
+        </EntityType>
+        <Association Name="fk_asmt_at_asmt">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="0..1" />
+          <End Role="asmt1" Type="Self.asmt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt">
+              <PropertyRef Name="asmt_id" />
+            </Principal>
+            <Dependent Role="asmt1">
+              <PropertyRef Name="asmt_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_dist_source_asmt_id">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="0..1" />
+          <End Role="asmt1" Type="Self.asmt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt">
+              <PropertyRef Name="asmt_id" />
+            </Principal>
+            <Dependent Role="asmt1">
+              <PropertyRef Name="dist_source_asmt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_description_asmt_score_level1">
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_description" Type="Self.asmt_perf_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_score_level">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_description">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_description_asmt_slo_criteria1">
+          <End Role="asmt_slo_criteria" Type="Self.asmt_slo_criteria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_description" Type="Self.asmt_perf_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_slo_criteria">
+              <PropertyRef Name="asmt_slo_criteria_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_description">
+              <PropertyRef Name="asmt_slo_criteria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_ds_default_asmt_score_level_id">
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_ds_default" Type="Self.asmt_perf_ds_default" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_score_level">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_ds_default">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_ds_default_slo_id">
+          <End Role="slo" Type="Self.slo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_ds_default" Type="Self.asmt_perf_ds_default" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_ds_default">
+              <PropertyRef Name="slo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_previous_asmt">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="0..1" />
+          <End Role="asmt1" Type="Self.asmt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt">
+              <PropertyRef Name="asmt_id" />
+            </Principal>
+            <Dependent Role="asmt1">
+              <PropertyRef Name="previous_asmt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_score_level_asmt_mastery_level1">
+          <End Role="asmt_mastery_level" Type="Self.asmt_mastery_level" Multiplicity="0..1" />
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_mastery_level">
+              <PropertyRef Name="asmt_mastery_level_id" />
+            </Principal>
+            <Dependent Role="asmt_score_level">
+              <PropertyRef Name="asmt_mastery_level_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_score_level_asmt_scale1">
+          <End Role="asmt_scale" Type="Self.asmt_scale" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_scale">
+              <PropertyRef Name="asmt_scale_id" />
+            </Principal>
+            <Dependent Role="asmt_score_level">
+              <PropertyRef Name="asmt_scale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_slo_criteria_slo1">
+          <End Role="slo" Type="Self.slo" Multiplicity="1" />
+          <End Role="asmt_slo_criteria" Type="Self.asmt_slo_criteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="asmt_slo_criteria">
+              <PropertyRef Name="slo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_slo_rel_asmt">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_slo_rel" Type="Self.asmt_slo_rel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt">
+              <PropertyRef Name="asmt_id" />
+            </Principal>
+            <Dependent Role="asmt_slo_rel">
+              <PropertyRef Name="asmt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_slo_rel_slo">
+          <End Role="slo" Type="Self.slo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_slo_rel" Type="Self.asmt_slo_rel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="asmt_slo_rel">
+              <PropertyRef Name="slo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_credential_at_credential">
+          <End Role="credential" Type="Self.credential" Multiplicity="0..1" />
+          <End Role="credential1" Type="Self.credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credential">
+              <PropertyRef Name="credential_id" />
+            </Principal>
+            <Dependent Role="credential1">
+              <PropertyRef Name="credential_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_credential_previous_credential">
+          <End Role="credential" Type="Self.credential" Multiplicity="0..1" />
+          <End Role="credential1" Type="Self.credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credential">
+              <PropertyRef Name="credential_id" />
+            </Principal>
+            <Dependent Role="credential1">
+              <PropertyRef Name="previous_credential_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_new_course_at_new_course">
+          <End Role="new_course" Type="Self.new_course" Multiplicity="0..1" />
+          <End Role="new_course1" Type="Self.new_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="new_course">
+              <PropertyRef Name="new_course_id" />
+            </Principal>
+            <Dependent Role="new_course1">
+              <PropertyRef Name="new_course_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_new_course_previous_new_course">
+          <End Role="new_course" Type="Self.new_course" Multiplicity="0..1" />
+          <End Role="new_course1" Type="Self.new_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="new_course">
+              <PropertyRef Name="new_course_id" />
+            </Principal>
+            <Dependent Role="new_course1">
+              <PropertyRef Name="previous_new_course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_at_slo">
+          <End Role="slo" Type="Self.slo" Multiplicity="0..1" />
+          <End Role="slo1" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="slo1">
+              <PropertyRef Name="slo_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SLO_CATEGORY_SLO_CATEGORY1">
+          <End Role="slo_category" Type="Self.slo_category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="slo_category1" Type="Self.slo_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo_category">
+              <PropertyRef Name="slo_category_id" />
+            </Principal>
+            <Dependent Role="slo_category1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_category_slo_class">
+          <End Role="slo_class" Type="Self.slo_class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="slo_category" Type="Self.slo_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo_class">
+              <PropertyRef Name="slo_class_id" />
+            </Principal>
+            <Dependent Role="slo_category">
+              <PropertyRef Name="slo_class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_class_owner_credential">
+          <End Role="credential" Type="Self.credential" Multiplicity="0..1" />
+          <End Role="slo_class" Type="Self.slo_class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credential">
+              <PropertyRef Name="credential_id" />
+            </Principal>
+            <Dependent Role="slo_class">
+              <PropertyRef Name="owner_credential" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_previous_slo">
+          <End Role="slo" Type="Self.slo" Multiplicity="0..1" />
+          <End Role="slo1" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="slo1">
+              <PropertyRef Name="previous_slo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SLO_SLO_CATEGORY1">
+          <End Role="slo_category" Type="Self.slo_category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="slo" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo_category">
+              <PropertyRef Name="slo_category_id" />
+            </Principal>
+            <Dependent Role="slo">
+              <PropertyRef Name="slo_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="slo_ibfk_1">
+          <End Role="new_course" Type="Self.new_course" Multiplicity="0..1" />
+          <End Role="slo" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="new_course">
+              <PropertyRef Name="new_course_id" />
+            </Principal>
+            <Dependent Role="slo">
+              <PropertyRef Name="new_course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="elumenModelStoreContainer">
+          <EntitySet Name="asmt" EntityType="Self.asmt" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_mastery_level" EntityType="Self.asmt_mastery_level" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_perf_description" EntityType="Self.asmt_perf_description" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_perf_ds_default" EntityType="Self.asmt_perf_ds_default" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_rubric_type" EntityType="Self.asmt_rubric_type" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_scale" EntityType="Self.asmt_scale" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_score_level" EntityType="Self.asmt_score_level" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_slo_criteria" EntityType="Self.asmt_slo_criteria" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="asmt_slo_rel" EntityType="Self.asmt_slo_rel" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="credential" EntityType="Self.credential" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="new_course" EntityType="Self.new_course" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="slo" EntityType="Self.slo" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="slo_asmt_scale" EntityType="Self.slo_asmt_scale" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="slo_category" EntityType="Self.slo_category" Schema="elumen" store:Type="Tables" />
+          <EntitySet Name="slo_class" EntityType="Self.slo_class" Schema="elumen" store:Type="Tables" />
+          <AssociationSet Name="fk_asmt_at_asmt" Association="Self.fk_asmt_at_asmt">
+            <End Role="asmt" EntitySet="asmt" />
+            <End Role="asmt1" EntitySet="asmt" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_dist_source_asmt_id" Association="Self.fk_asmt_dist_source_asmt_id">
+            <End Role="asmt" EntitySet="asmt" />
+            <End Role="asmt1" EntitySet="asmt" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_description_asmt_score_level1" Association="Self.fk_asmt_perf_description_asmt_score_level1">
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+            <End Role="asmt_perf_description" EntitySet="asmt_perf_description" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_description_asmt_slo_criteria1" Association="Self.fk_asmt_perf_description_asmt_slo_criteria1">
+            <End Role="asmt_slo_criteria" EntitySet="asmt_slo_criteria" />
+            <End Role="asmt_perf_description" EntitySet="asmt_perf_description" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_ds_default_asmt_score_level_id" Association="Self.fk_asmt_perf_ds_default_asmt_score_level_id">
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+            <End Role="asmt_perf_ds_default" EntitySet="asmt_perf_ds_default" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_ds_default_slo_id" Association="Self.fk_asmt_perf_ds_default_slo_id">
+            <End Role="slo" EntitySet="slo" />
+            <End Role="asmt_perf_ds_default" EntitySet="asmt_perf_ds_default" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_previous_asmt" Association="Self.fk_asmt_previous_asmt">
+            <End Role="asmt" EntitySet="asmt" />
+            <End Role="asmt1" EntitySet="asmt" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_score_level_asmt_mastery_level1" Association="Self.fk_asmt_score_level_asmt_mastery_level1">
+            <End Role="asmt_mastery_level" EntitySet="asmt_mastery_level" />
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_score_level_asmt_scale1" Association="Self.fk_asmt_score_level_asmt_scale1">
+            <End Role="asmt_scale" EntitySet="asmt_scale" />
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_slo_criteria_slo1" Association="Self.fk_asmt_slo_criteria_slo1">
+            <End Role="slo" EntitySet="slo" />
+            <End Role="asmt_slo_criteria" EntitySet="asmt_slo_criteria" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_slo_rel_asmt" Association="Self.fk_asmt_slo_rel_asmt">
+            <End Role="asmt" EntitySet="asmt" />
+            <End Role="asmt_slo_rel" EntitySet="asmt_slo_rel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_slo_rel_slo" Association="Self.fk_asmt_slo_rel_slo">
+            <End Role="slo" EntitySet="slo" />
+            <End Role="asmt_slo_rel" EntitySet="asmt_slo_rel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_credential_at_credential" Association="Self.fk_credential_at_credential">
+            <End Role="credential" EntitySet="credential" />
+            <End Role="credential1" EntitySet="credential" />
+          </AssociationSet>
+          <AssociationSet Name="fk_credential_previous_credential" Association="Self.fk_credential_previous_credential">
+            <End Role="credential" EntitySet="credential" />
+            <End Role="credential1" EntitySet="credential" />
+          </AssociationSet>
+          <AssociationSet Name="fk_new_course_at_new_course" Association="Self.fk_new_course_at_new_course">
+            <End Role="new_course" EntitySet="new_course" />
+            <End Role="new_course1" EntitySet="new_course" />
+          </AssociationSet>
+          <AssociationSet Name="fk_new_course_previous_new_course" Association="Self.fk_new_course_previous_new_course">
+            <End Role="new_course" EntitySet="new_course" />
+            <End Role="new_course1" EntitySet="new_course" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_at_slo" Association="Self.fk_slo_at_slo">
+            <End Role="slo" EntitySet="slo" />
+            <End Role="slo1" EntitySet="slo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SLO_CATEGORY_SLO_CATEGORY1" Association="Self.fk_SLO_CATEGORY_SLO_CATEGORY1">
+            <End Role="slo_category" EntitySet="slo_category" />
+            <End Role="slo_category1" EntitySet="slo_category" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_category_slo_class" Association="Self.fk_slo_category_slo_class">
+            <End Role="slo_class" EntitySet="slo_class" />
+            <End Role="slo_category" EntitySet="slo_category" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_class_owner_credential" Association="Self.fk_slo_class_owner_credential">
+            <End Role="credential" EntitySet="credential" />
+            <End Role="slo_class" EntitySet="slo_class" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_previous_slo" Association="Self.fk_slo_previous_slo">
+            <End Role="slo" EntitySet="slo" />
+            <End Role="slo1" EntitySet="slo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SLO_SLO_CATEGORY1" Association="Self.fk_SLO_SLO_CATEGORY1">
+            <End Role="slo_category" EntitySet="slo_category" />
+            <End Role="slo" EntitySet="slo" />
+          </AssociationSet>
+          <AssociationSet Name="slo_ibfk_1" Association="Self.slo_ibfk_1">
+            <End Role="new_course" EntitySet="new_course" />
+            <End Role="slo" EntitySet="slo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="elumenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="asmt">
+          <Key>
+            <PropertyRef Name="asmt_id" />
+          </Key>
+          <Property Name="asmt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asmt_atid" Type="Int32" />
+          <Property Name="previous_asmt_id" Type="Int32" />
+          <Property Name="current_flag" Type="SByte" />
+          <Property Name="is_latest" Type="SByte" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="is_shared" Type="Boolean" Nullable="false" />
+          <Property Name="new_activity_ds" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="new_activity_type_id" Type="Int32" />
+          <Property Name="for_library" Type="Boolean" />
+          <Property Name="C_makeMeCollective" Type="Boolean" />
+          <Property Name="C_was_unused_sa" Type="Boolean" />
+          <Property Name="C_src_sa_id" Type="Int32" />
+          <Property Name="C_src_pa_id" Type="Int32" />
+          <Property Name="new_activity_name" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="activity_specified" Type="Int32" />
+          <Property Name="score_type" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="scard_view" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rub_view" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="activity_specified_ds" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="dist_source_asmt_id" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_deleted" Type="SByte" Nullable="false" />
+          <Property Name="enable_activity" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="default_distribution_id" Type="Int32" />
+          <Property Name="current_version" Type="Int32" />
+          <Property Name="student_self_asmt_enabled" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="is_dla" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="use_activity_benchmark" Type="Int32" />
+          <Property Name="passing_score" Type="Decimal" />
+          <Property Name="cascade_status" Type="Boolean" Nullable="false" />
+          <Property Name="disabled_by_scoring_setting" Type="Int32" Nullable="false" />
+          <Property Name="sloList" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="sloCount" Type="Int32" />
+          <Property Name="is_portfolio" Type="Boolean" Nullable="false" />
+          <Property Name="portfolio_template_id" Type="Int32" />
+          <Property Name="is_multi_rater" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_allow_annotations" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="asmt1" Relationship="Self.fk_asmt_at_asmt" FromRole="asmt" ToRole="asmt1" />
+          <NavigationProperty Name="asmt2" Relationship="Self.fk_asmt_at_asmt" FromRole="asmt1" ToRole="asmt" />
+          <NavigationProperty Name="asmt11" Relationship="Self.fk_asmt_dist_source_asmt_id" FromRole="asmt" ToRole="asmt1" />
+          <NavigationProperty Name="asmt3" Relationship="Self.fk_asmt_dist_source_asmt_id" FromRole="asmt1" ToRole="asmt" />
+          <NavigationProperty Name="asmt12" Relationship="Self.fk_asmt_previous_asmt" FromRole="asmt" ToRole="asmt1" />
+          <NavigationProperty Name="asmt4" Relationship="Self.fk_asmt_previous_asmt" FromRole="asmt1" ToRole="asmt" />
+          <NavigationProperty Name="sloes" Relationship="Self.asmt_slo_rel" FromRole="asmt" ToRole="slo" />
+        </EntityType>
+        <EntityType Name="asmt_mastery_level">
+          <Key>
+            <PropertyRef Name="asmt_mastery_level_id" />
+          </Key>
+          <Property Name="asmt_mastery_level_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="display_seq" Type="Int32" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" />
+          <Property Name="not_applicable" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_src_scale_lvl_id" Type="Int32" />
+          <NavigationProperty Name="asmt_score_level" Relationship="Self.fk_asmt_score_level_asmt_mastery_level1" FromRole="asmt_mastery_level" ToRole="asmt_score_level" />
+        </EntityType>
+        <EntityType Name="asmt_perf_description">
+          <Key>
+            <PropertyRef Name="asmt_perf_description_id" />
+          </Key>
+          <Property Name="asmt_perf_description_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="asmt_score_level_id" Type="Int32" Nullable="false" />
+          <Property Name="asmt_criteria_id" Type="Int32" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="asmt_slo_criteria_id" Type="Int32" />
+          <Property Name="C_was_unused_sa" Type="Boolean" />
+          <NavigationProperty Name="asmt_score_level" Relationship="Self.fk_asmt_perf_description_asmt_score_level1" FromRole="asmt_perf_description" ToRole="asmt_score_level" />
+          <NavigationProperty Name="asmt_slo_criteria" Relationship="Self.fk_asmt_perf_description_asmt_slo_criteria1" FromRole="asmt_perf_description" ToRole="asmt_slo_criteria" />
+        </EntityType>
+        <EntityType Name="asmt_perf_ds_default">
+          <Key>
+            <PropertyRef Name="asmt_perf_ds_default_id" />
+          </Key>
+          <Property Name="asmt_perf_ds_default_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="asmt_score_level_id" Type="Int32" Nullable="false" />
+          <Property Name="slo_id" Type="Int32" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="asmt_score_level" Relationship="Self.fk_asmt_perf_ds_default_asmt_score_level_id" FromRole="asmt_perf_ds_default" ToRole="asmt_score_level" />
+          <NavigationProperty Name="slo" Relationship="Self.fk_asmt_perf_ds_default_slo_id" FromRole="asmt_perf_ds_default" ToRole="slo" />
+        </EntityType>
+        <EntityType Name="asmt_rubric_type">
+          <Key>
+            <PropertyRef Name="asmt_rubric_type_id" />
+          </Key>
+          <Property Name="asmt_rubric_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="multiple_slo" Type="Boolean" Nullable="false" />
+          <Property Name="direct_slo_score" Type="Boolean" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="asmt_scale">
+          <Key>
+            <PropertyRef Name="asmt_scale_id" />
+          </Key>
+          <Property Name="asmt_scale_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardinality" Type="Int32" Nullable="false" />
+          <Property Name="scale_type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="top_number_scale" Type="Int32" />
+          <Property Name="rounding_method" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="use_not_applicable" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="enabled" Type="SByte" Nullable="false" />
+          <Property Name="zero_based_scores" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="is_default" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="asmt_score_level" Relationship="Self.fk_asmt_score_level_asmt_scale1" FromRole="asmt_scale" ToRole="asmt_score_level" />
+        </EntityType>
+        <EntityType Name="asmt_score_level">
+          <Key>
+            <PropertyRef Name="asmt_score_level_id" />
+          </Key>
+          <Property Name="asmt_score_level_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="Int32" />
+          <Property Name="asmt_mastery_level_id" Type="Int32" />
+          <Property Name="points" Type="Decimal" />
+          <Property Name="asmt_scored_id" Type="Int32" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="asmt_scale_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" />
+          <Property Name="not_applicable" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="default_perf_ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="C_src_scale_default_rubric_interp_id" Type="Int32" />
+          <NavigationProperty Name="asmt_mastery_level" Relationship="Self.fk_asmt_score_level_asmt_mastery_level1" FromRole="asmt_score_level" ToRole="asmt_mastery_level" />
+          <NavigationProperty Name="asmt_perf_description" Relationship="Self.fk_asmt_perf_description_asmt_score_level1" FromRole="asmt_score_level" ToRole="asmt_perf_description" />
+          <NavigationProperty Name="asmt_perf_ds_default" Relationship="Self.fk_asmt_perf_ds_default_asmt_score_level_id" FromRole="asmt_score_level" ToRole="asmt_perf_ds_default" />
+          <NavigationProperty Name="asmt_scale" Relationship="Self.fk_asmt_score_level_asmt_scale1" FromRole="asmt_score_level" ToRole="asmt_scale" />
+        </EntityType>
+        <EntityType Name="asmt_slo_criteria">
+          <Key>
+            <PropertyRef Name="asmt_slo_criteria_id" />
+          </Key>
+          <Property Name="asmt_slo_criteria_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asmt_scored_id" Type="Int32" Nullable="false" />
+          <Property Name="slo_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="C_src_scale_id" Type="Int32" />
+          <Property Name="C_was_unused_sa" Type="Boolean" />
+          <NavigationProperty Name="asmt_perf_description" Relationship="Self.fk_asmt_perf_description_asmt_slo_criteria1" FromRole="asmt_slo_criteria" ToRole="asmt_perf_description" />
+          <NavigationProperty Name="slo" Relationship="Self.fk_asmt_slo_criteria_slo1" FromRole="asmt_slo_criteria" ToRole="slo" />
+        </EntityType>
+        <EntityType Name="new_course">
+          <Key>
+            <PropertyRef Name="new_course_id" />
+          </Key>
+          <Property Name="new_course_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="new_course_atid" Type="Int32" />
+          <Property Name="previous_new_course_id" Type="Int32" />
+          <Property Name="current_flag" Type="SByte" />
+          <Property Name="is_latest" Type="SByte" Nullable="false" />
+          <Property Name="starting_term_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="short_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="recommended_enrollment" Type="Int32" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="org_entity_id" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="inactive_flag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="new_course_type_id" Type="Int32" />
+          <Property Name="num_credits" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eligible_for_audit" Type="SByte" />
+          <Property Name="course_duration_minimum" Type="Int32" />
+          <Property Name="course_duration_maximum" Type="Int32" />
+          <Property Name="retake_policy" Type="Int32" />
+          <Property Name="retake_policy_description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="transferability_id" Type="Int32" />
+          <Property Name="comparable_course" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="is_credit_by_exam" Type="SByte" />
+          <Property Name="master_discipline_preferred_id" Type="Int32" />
+          <Property Name="alternate_master_discipline_id" Type="Int32" />
+          <Property Name="additional_non_master_discipline_id" Type="Int32" />
+          <Property Name="lecture_hours" Type="Int32" />
+          <Property Name="distance_ed_hours" Type="Int32" />
+          <Property Name="homework_hours" Type="Int32" />
+          <Property Name="work_based_learning_hours" Type="Int32" />
+          <Property Name="clinical_hours" Type="Int32" />
+          <Property Name="field_trip_hours" Type="Int32" />
+          <Property Name="lab_hours" Type="Int32" />
+          <Property Name="other_hours" Type="Int32" />
+          <Property Name="max_other_hours" Type="Int32" />
+          <Property Name="certifications" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="additional_master_discipline_id" Type="Int32" />
+          <Property Name="notes_for_students" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="course_outline_free_text" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="me_homework" Type="SByte" />
+          <Property Name="me_tests" Type="SByte" />
+          <Property Name="me_final_exam" Type="SByte" />
+          <Property Name="me_project" Type="SByte" />
+          <Property Name="me_participation" Type="SByte" />
+          <Property Name="me_description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="equipment_needed" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="methods_of_instruction" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="out_of_class_assignments" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="object_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="course_subject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="course_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="course_suffix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="course_control_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="old_course_id" Type="Int32" />
+          <Property Name="old_context_id" Type="Int32" />
+          <Property Name="C_src_course_id" Type="Int32" />
+          <Property Name="C_src_ssa_id" Type="Int32" />
+          <Property Name="has_coordinator" Type="Int32" />
+          <Property Name="coordinator_manage_courses" Type="Int32" />
+          <Property Name="coordinator_manage_evaluators" Type="Int32" />
+          <Property Name="coordinator_manage_collective" Type="Int32" />
+          <Property Name="top_code" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="top_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="cip_code" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="cip_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="sam_code_id" Type="Int32" />
+          <Property Name="was_shared" Type="Int32" />
+          <Property Name="max_lecture_hours" Type="Int32" />
+          <Property Name="max_lab_hours" Type="Int32" />
+          <Property Name="ttl_lecture_hours" Type="Int32" />
+          <Property Name="ttl_max_lecture_hours" Type="Int32" />
+          <Property Name="ttl_lab_hours" Type="Int32" />
+          <Property Name="ttl_max_lab_hours" Type="Int32" />
+          <Property Name="requested_start_semester" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="requested_start_year" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="uc_approval_semester" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="uc_approval_year" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="csu_approval_semester" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="csu_approval_year" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="csu_ge_approval_semester" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="csu_ge_approval_year" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="igetc_semester" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="igetc_year" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="is_comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="history" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="impact_cert_text" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="impact_class_text" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="advisory_committee_recommended" Type="Boolean" />
+          <Property Name="advisory_recommended_date" Type="DateTime" />
+          <Property Name="field_trip_requirement" Type="Boolean" />
+          <Property Name="recommended_enrollment_justification" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="retake_policy_justification" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="starting_term_justification" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="unit_hrs" Type="Int32" />
+          <Property Name="max_unit_hrs" Type="Int32" />
+          <Property Name="credit_hrs" Type="Int32" />
+          <Property Name="max_credit_hrs" Type="Int32" />
+          <Property Name="student_population" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="course_workflow_json_history_id" Type="Int32" />
+          <Property Name="course_delivery_type" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="max_num_credits" Type="Int32" />
+          <Property Name="min_num_credits" Type="Int32" />
+          <Property Name="cb12" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="can_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="can_seq_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cb16" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cb17" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cb18" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="crosswalk_course_dept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="crosswalk_course_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time_for_review_quantity" Type="Int32" />
+          <Property Name="time_for_review_measure" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="approved_date" Type="DateTime" />
+          <Property Name="course_uuid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="new_course1" Relationship="Self.fk_new_course_at_new_course" FromRole="new_course" ToRole="new_course1" />
+          <NavigationProperty Name="new_course2" Relationship="Self.fk_new_course_at_new_course" FromRole="new_course1" ToRole="new_course" />
+          <NavigationProperty Name="new_course11" Relationship="Self.fk_new_course_previous_new_course" FromRole="new_course" ToRole="new_course1" />
+          <NavigationProperty Name="new_course3" Relationship="Self.fk_new_course_previous_new_course" FromRole="new_course1" ToRole="new_course" />
+          <NavigationProperty Name="sloes" Relationship="Self.slo_ibfk_1" FromRole="new_course" ToRole="slo" />
+        </EntityType>
+        <EntityType Name="slo">
+          <Key>
+            <PropertyRef Name="slo_id" />
+          </Key>
+          <Property Name="slo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slo_atid" Type="Int32" />
+          <Property Name="previous_slo_id" Type="Int32" />
+          <Property Name="current_flag" Type="SByte" />
+          <Property Name="is_latest" Type="SByte" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="performance" Type="Decimal" />
+          <Property Name="starting_term_id" Type="Int32" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="owner_org_entity_id" Type="Int32" />
+          <Property Name="slo_type_id" Type="Int32" />
+          <Property Name="slo_outcome_level_id" Type="Int32" Nullable="false" />
+          <Property Name="slo_category_id" Type="Int32" />
+          <Property Name="new_course_id" Type="Int32" />
+          <Property Name="seq" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="C_src_aa_id" Type="Int32" />
+          <Property Name="C_src_ag_id" Type="Int32" />
+          <Property Name="C_src_bmg_id" Type="Int32" />
+          <Property Name="C_src_bm_id" Type="Int32" />
+          <Property Name="C_src_bmc_id" Type="Int32" />
+          <Property Name="C_src_ca_id" Type="Int32" />
+          <Property Name="C_src_cip_id" Type="Int32" />
+          <NavigationProperty Name="asmt_perf_ds_default" Relationship="Self.fk_asmt_perf_ds_default_slo_id" FromRole="slo" ToRole="asmt_perf_ds_default" />
+          <NavigationProperty Name="asmt_slo_criteria" Relationship="Self.fk_asmt_slo_criteria_slo1" FromRole="slo" ToRole="asmt_slo_criteria" />
+          <NavigationProperty Name="new_course" Relationship="Self.slo_ibfk_1" FromRole="slo" ToRole="new_course" />
+          <NavigationProperty Name="slo1" Relationship="Self.fk_slo_at_slo" FromRole="slo" ToRole="slo1" />
+          <NavigationProperty Name="slo2" Relationship="Self.fk_slo_at_slo" FromRole="slo1" ToRole="slo" />
+          <NavigationProperty Name="slo11" Relationship="Self.fk_slo_previous_slo" FromRole="slo" ToRole="slo1" />
+          <NavigationProperty Name="slo3" Relationship="Self.fk_slo_previous_slo" FromRole="slo1" ToRole="slo" />
+          <NavigationProperty Name="slo_category" Relationship="Self.fk_SLO_SLO_CATEGORY1" FromRole="slo" ToRole="slo_category" />
+          <NavigationProperty Name="asmts" Relationship="Self.asmt_slo_rel" FromRole="slo" ToRole="asmt" />
+        </EntityType>
+        <EntityType Name="slo_asmt_scale">
+          <Key>
+            <PropertyRef Name="slo_asmt_scale_id" />
+          </Key>
+          <Property Name="slo_asmt_scale_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="display_seq" Type="Int32" />
+        </EntityType>
+        <EntityType Name="slo_category">
+          <Key>
+            <PropertyRef Name="slo_category_id" />
+          </Key>
+          <Property Name="slo_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="owner_org_entity_id" Type="Int32" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="slo_outcome_level_id" Type="Int32" />
+          <Property Name="slo_class_id" Type="Int32" />
+          <Property Name="C_src_bm_id" Type="Int32" />
+          <Property Name="seq" Type="Int32" />
+          <NavigationProperty Name="sloes" Relationship="Self.fk_SLO_SLO_CATEGORY1" FromRole="slo_category" ToRole="slo" />
+          <NavigationProperty Name="slo_category1" Relationship="Self.fk_SLO_CATEGORY_SLO_CATEGORY1" FromRole="slo_category" ToRole="slo_category1" />
+          <NavigationProperty Name="slo_category2" Relationship="Self.fk_SLO_CATEGORY_SLO_CATEGORY1" FromRole="slo_category1" ToRole="slo_category" />
+          <NavigationProperty Name="slo_class" Relationship="Self.fk_slo_category_slo_class" FromRole="slo_category" ToRole="slo_class" />
+        </EntityType>
+        <EntityType Name="slo_class">
+          <Key>
+            <PropertyRef Name="slo_class_id" />
+          </Key>
+          <Property Name="slo_class_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="mission_stm" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="org_entity_id" Type="Int32" Nullable="false" />
+          <Property Name="slo_outcome_level_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="seq" Type="Int32" />
+          <Property Name="bool_cert_and_deg" Type="SByte" />
+          <Property Name="bool_standards_body" Type="SByte" />
+          <Property Name="standards_body_ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="use_category" Type="SByte" Nullable="false" />
+          <Property Name="is_third_party_standard_set" Type="SByte" />
+          <Property Name="is_gen_ed" Type="Boolean" />
+          <Property Name="owner_credential" Type="Int32" />
+          <NavigationProperty Name="slo_category" Relationship="Self.fk_slo_category_slo_class" FromRole="slo_class" ToRole="slo_category" />
+          <NavigationProperty Name="credential" Relationship="elumenModel.fk_slo_class_owner_credential" FromRole="slo_class" ToRole="credential" />
+        </EntityType>
+        <Association Name="fk_asmt_at_asmt">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="0..1" />
+          <End Role="asmt1" Type="Self.asmt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt">
+              <PropertyRef Name="asmt_id" />
+            </Principal>
+            <Dependent Role="asmt1">
+              <PropertyRef Name="asmt_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_dist_source_asmt_id">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="0..1" />
+          <End Role="asmt1" Type="Self.asmt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt">
+              <PropertyRef Name="asmt_id" />
+            </Principal>
+            <Dependent Role="asmt1">
+              <PropertyRef Name="dist_source_asmt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_previous_asmt">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="0..1" />
+          <End Role="asmt1" Type="Self.asmt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt">
+              <PropertyRef Name="asmt_id" />
+            </Principal>
+            <Dependent Role="asmt1">
+              <PropertyRef Name="previous_asmt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_score_level_asmt_mastery_level1">
+          <End Role="asmt_mastery_level" Type="Self.asmt_mastery_level" Multiplicity="0..1" />
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_mastery_level">
+              <PropertyRef Name="asmt_mastery_level_id" />
+            </Principal>
+            <Dependent Role="asmt_score_level">
+              <PropertyRef Name="asmt_mastery_level_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_description_asmt_score_level1">
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_description" Type="Self.asmt_perf_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_score_level">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_description">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_description_asmt_slo_criteria1">
+          <End Role="asmt_slo_criteria" Type="Self.asmt_slo_criteria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_description" Type="Self.asmt_perf_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_slo_criteria">
+              <PropertyRef Name="asmt_slo_criteria_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_description">
+              <PropertyRef Name="asmt_slo_criteria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_ds_default_asmt_score_level_id">
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_ds_default" Type="Self.asmt_perf_ds_default" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_score_level">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_ds_default">
+              <PropertyRef Name="asmt_score_level_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_perf_ds_default_slo_id">
+          <End Role="slo" Type="Self.slo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_perf_ds_default" Type="Self.asmt_perf_ds_default" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="asmt_perf_ds_default">
+              <PropertyRef Name="slo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_score_level_asmt_scale1">
+          <End Role="asmt_scale" Type="Self.asmt_scale" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="asmt_score_level" Type="Self.asmt_score_level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asmt_scale">
+              <PropertyRef Name="asmt_scale_id" />
+            </Principal>
+            <Dependent Role="asmt_score_level">
+              <PropertyRef Name="asmt_scale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asmt_slo_criteria_slo1">
+          <End Role="slo" Type="Self.slo" Multiplicity="1" />
+          <End Role="asmt_slo_criteria" Type="Self.asmt_slo_criteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="asmt_slo_criteria">
+              <PropertyRef Name="slo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_new_course_at_new_course">
+          <End Role="new_course" Type="Self.new_course" Multiplicity="0..1" />
+          <End Role="new_course1" Type="Self.new_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="new_course">
+              <PropertyRef Name="new_course_id" />
+            </Principal>
+            <Dependent Role="new_course1">
+              <PropertyRef Name="new_course_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_new_course_previous_new_course">
+          <End Role="new_course" Type="Self.new_course" Multiplicity="0..1" />
+          <End Role="new_course1" Type="Self.new_course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="new_course">
+              <PropertyRef Name="new_course_id" />
+            </Principal>
+            <Dependent Role="new_course1">
+              <PropertyRef Name="previous_new_course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="slo_ibfk_1">
+          <End Role="new_course" Type="Self.new_course" Multiplicity="0..1" />
+          <End Role="slo" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="new_course">
+              <PropertyRef Name="new_course_id" />
+            </Principal>
+            <Dependent Role="slo">
+              <PropertyRef Name="new_course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_at_slo">
+          <End Role="slo" Type="Self.slo" Multiplicity="0..1" />
+          <End Role="slo1" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="slo1">
+              <PropertyRef Name="slo_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_previous_slo">
+          <End Role="slo" Type="Self.slo" Multiplicity="0..1" />
+          <End Role="slo1" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo">
+              <PropertyRef Name="slo_id" />
+            </Principal>
+            <Dependent Role="slo1">
+              <PropertyRef Name="previous_slo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SLO_SLO_CATEGORY1">
+          <End Role="slo_category" Type="Self.slo_category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="slo" Type="Self.slo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo_category">
+              <PropertyRef Name="slo_category_id" />
+            </Principal>
+            <Dependent Role="slo">
+              <PropertyRef Name="slo_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SLO_CATEGORY_SLO_CATEGORY1">
+          <End Role="slo_category" Type="Self.slo_category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="slo_category1" Type="Self.slo_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo_category">
+              <PropertyRef Name="slo_category_id" />
+            </Principal>
+            <Dependent Role="slo_category1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_category_slo_class">
+          <End Role="slo_class" Type="Self.slo_class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="slo_category" Type="Self.slo_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slo_class">
+              <PropertyRef Name="slo_class_id" />
+            </Principal>
+            <Dependent Role="slo_category">
+              <PropertyRef Name="slo_class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="asmt_slo_rel">
+          <End Role="asmt" Type="Self.asmt" Multiplicity="*" />
+          <End Role="slo" Type="Self.slo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="elumenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="asmts" EntityType="Self.asmt" />
+          <EntitySet Name="asmt_mastery_level" EntityType="Self.asmt_mastery_level" />
+          <EntitySet Name="asmt_perf_description" EntityType="Self.asmt_perf_description" />
+          <EntitySet Name="asmt_perf_ds_default" EntityType="Self.asmt_perf_ds_default" />
+          <EntitySet Name="asmt_rubric_type" EntityType="Self.asmt_rubric_type" />
+          <EntitySet Name="asmt_scale" EntityType="Self.asmt_scale" />
+          <EntitySet Name="asmt_score_level" EntityType="Self.asmt_score_level" />
+          <EntitySet Name="asmt_slo_criteria" EntityType="Self.asmt_slo_criteria" />
+          <EntitySet Name="new_course" EntityType="Self.new_course" />
+          <EntitySet Name="sloes" EntityType="Self.slo" />
+          <EntitySet Name="slo_asmt_scale" EntityType="Self.slo_asmt_scale" />
+          <EntitySet Name="slo_category" EntityType="Self.slo_category" />
+          <EntitySet Name="slo_class" EntityType="Self.slo_class" />
+          <AssociationSet Name="fk_asmt_at_asmt" Association="Self.fk_asmt_at_asmt">
+            <End Role="asmt" EntitySet="asmts" />
+            <End Role="asmt1" EntitySet="asmts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_dist_source_asmt_id" Association="Self.fk_asmt_dist_source_asmt_id">
+            <End Role="asmt" EntitySet="asmts" />
+            <End Role="asmt1" EntitySet="asmts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_previous_asmt" Association="Self.fk_asmt_previous_asmt">
+            <End Role="asmt" EntitySet="asmts" />
+            <End Role="asmt1" EntitySet="asmts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_score_level_asmt_mastery_level1" Association="Self.fk_asmt_score_level_asmt_mastery_level1">
+            <End Role="asmt_mastery_level" EntitySet="asmt_mastery_level" />
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_description_asmt_score_level1" Association="Self.fk_asmt_perf_description_asmt_score_level1">
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+            <End Role="asmt_perf_description" EntitySet="asmt_perf_description" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_description_asmt_slo_criteria1" Association="Self.fk_asmt_perf_description_asmt_slo_criteria1">
+            <End Role="asmt_slo_criteria" EntitySet="asmt_slo_criteria" />
+            <End Role="asmt_perf_description" EntitySet="asmt_perf_description" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_ds_default_asmt_score_level_id" Association="Self.fk_asmt_perf_ds_default_asmt_score_level_id">
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+            <End Role="asmt_perf_ds_default" EntitySet="asmt_perf_ds_default" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_perf_ds_default_slo_id" Association="Self.fk_asmt_perf_ds_default_slo_id">
+            <End Role="slo" EntitySet="sloes" />
+            <End Role="asmt_perf_ds_default" EntitySet="asmt_perf_ds_default" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_score_level_asmt_scale1" Association="Self.fk_asmt_score_level_asmt_scale1">
+            <End Role="asmt_scale" EntitySet="asmt_scale" />
+            <End Role="asmt_score_level" EntitySet="asmt_score_level" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asmt_slo_criteria_slo1" Association="Self.fk_asmt_slo_criteria_slo1">
+            <End Role="slo" EntitySet="sloes" />
+            <End Role="asmt_slo_criteria" EntitySet="asmt_slo_criteria" />
+          </AssociationSet>
+          <AssociationSet Name="fk_new_course_at_new_course" Association="Self.fk_new_course_at_new_course">
+            <End Role="new_course" EntitySet="new_course" />
+            <End Role="new_course1" EntitySet="new_course" />
+          </AssociationSet>
+          <AssociationSet Name="fk_new_course_previous_new_course" Association="Self.fk_new_course_previous_new_course">
+            <End Role="new_course" EntitySet="new_course" />
+            <End Role="new_course1" EntitySet="new_course" />
+          </AssociationSet>
+          <AssociationSet Name="slo_ibfk_1" Association="Self.slo_ibfk_1">
+            <End Role="new_course" EntitySet="new_course" />
+            <End Role="slo" EntitySet="sloes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_at_slo" Association="Self.fk_slo_at_slo">
+            <End Role="slo" EntitySet="sloes" />
+            <End Role="slo1" EntitySet="sloes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_previous_slo" Association="Self.fk_slo_previous_slo">
+            <End Role="slo" EntitySet="sloes" />
+            <End Role="slo1" EntitySet="sloes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SLO_SLO_CATEGORY1" Association="Self.fk_SLO_SLO_CATEGORY1">
+            <End Role="slo_category" EntitySet="slo_category" />
+            <End Role="slo" EntitySet="sloes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SLO_CATEGORY_SLO_CATEGORY1" Association="Self.fk_SLO_CATEGORY_SLO_CATEGORY1">
+            <End Role="slo_category" EntitySet="slo_category" />
+            <End Role="slo_category1" EntitySet="slo_category" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_category_slo_class" Association="Self.fk_slo_category_slo_class">
+            <End Role="slo_class" EntitySet="slo_class" />
+            <End Role="slo_category" EntitySet="slo_category" />
+          </AssociationSet>
+          <AssociationSet Name="asmt_slo_rel" Association="Self.asmt_slo_rel">
+            <End Role="asmt" EntitySet="asmts" />
+            <End Role="slo" EntitySet="sloes" />
+          </AssociationSet>
+          <EntitySet Name="credentials" EntityType="elumenModel.credential" />
+          <AssociationSet Name="fk_credential_at_credential" Association="elumenModel.fk_credential_at_credential">
+            <End Role="credential" EntitySet="credentials" />
+            <End Role="credential1" EntitySet="credentials" />
+          </AssociationSet>
+          <AssociationSet Name="fk_credential_previous_credential" Association="elumenModel.fk_credential_previous_credential">
+            <End Role="credential" EntitySet="credentials" />
+            <End Role="credential1" EntitySet="credentials" />
+          </AssociationSet>
+          <AssociationSet Name="fk_slo_class_owner_credential" Association="elumenModel.fk_slo_class_owner_credential">
+            <End Role="credential" EntitySet="credentials" />
+            <End Role="slo_class" EntitySet="slo_class" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="credential">
+          <Key>
+            <PropertyRef Name="credential_id" />
+          </Key>
+          <Property Name="credential_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="credential_atid" Type="Int32" />
+          <Property Name="previous_credential_id" Type="Int32" />
+          <Property Name="current_flag" Type="Boolean" />
+          <Property Name="is_latest" Type="SByte" Nullable="false" />
+          <Property Name="starting_term_id" Type="Int32" />
+          <Property Name="credential_type_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ds" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="lst_mod_user_id" Type="Int32" Nullable="false" />
+          <Property Name="lst_mod_dt" Type="DateTime" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="active_flag" Type="Int32" />
+          <Property Name="org_entity_id" Type="Int32" />
+          <Property Name="transferability_id" Type="Int32" />
+          <Property Name="program_mode" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="C_external_credential_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="top_code" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="credential1" Relationship="elumenModel.fk_credential_at_credential" FromRole="credential" ToRole="credential1" />
+          <NavigationProperty Name="credential2" Relationship="elumenModel.fk_credential_at_credential" FromRole="credential1" ToRole="credential" />
+          <NavigationProperty Name="credential11" Relationship="elumenModel.fk_credential_previous_credential" FromRole="credential" ToRole="credential1" />
+          <NavigationProperty Name="credential3" Relationship="elumenModel.fk_credential_previous_credential" FromRole="credential1" ToRole="credential" />
+          <NavigationProperty Name="slo_class" Relationship="elumenModel.fk_slo_class_owner_credential" FromRole="credential" ToRole="slo_class" />
+        </EntityType>
+        <Association Name="fk_credential_at_credential">
+          <End Type="elumenModel.credential" Role="credential" Multiplicity="0..1" />
+          <End Type="elumenModel.credential" Role="credential1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credential">
+              <PropertyRef Name="credential_id" />
+            </Principal>
+            <Dependent Role="credential1">
+              <PropertyRef Name="credential_atid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_credential_previous_credential">
+          <End Type="elumenModel.credential" Role="credential" Multiplicity="0..1" />
+          <End Type="elumenModel.credential" Role="credential1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credential">
+              <PropertyRef Name="credential_id" />
+            </Principal>
+            <Dependent Role="credential1">
+              <PropertyRef Name="previous_credential_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_slo_class_owner_credential">
+          <End Type="elumenModel.credential" Role="credential" Multiplicity="0..1" />
+          <End Type="elumenModel.slo_class" Role="slo_class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credential">
+              <PropertyRef Name="credential_id" />
+            </Principal>
+            <Dependent Role="slo_class">
+              <PropertyRef Name="owner_credential" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="elumenModelStoreContainer" CdmEntityContainer="elumenEntities">
+          <EntitySetMapping Name="asmts">
+            <EntityTypeMapping TypeName="elumenModel.asmt">
+              <MappingFragment StoreEntitySet="asmt">
+                <ScalarProperty Name="asmt_id" ColumnName="asmt_id" />
+                <ScalarProperty Name="asmt_atid" ColumnName="asmt_atid" />
+                <ScalarProperty Name="previous_asmt_id" ColumnName="previous_asmt_id" />
+                <ScalarProperty Name="current_flag" ColumnName="current_flag" />
+                <ScalarProperty Name="is_latest" ColumnName="is_latest" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="is_shared" ColumnName="is_shared" />
+                <ScalarProperty Name="new_activity_ds" ColumnName="new_activity_ds" />
+                <ScalarProperty Name="new_activity_type_id" ColumnName="new_activity_type_id" />
+                <ScalarProperty Name="for_library" ColumnName="for_library" />
+                <ScalarProperty Name="C_makeMeCollective" ColumnName="_makeMeCollective" />
+                <ScalarProperty Name="C_was_unused_sa" ColumnName="_was_unused_sa" />
+                <ScalarProperty Name="C_src_sa_id" ColumnName="_src_sa_id" />
+                <ScalarProperty Name="C_src_pa_id" ColumnName="_src_pa_id" />
+                <ScalarProperty Name="new_activity_name" ColumnName="new_activity_name" />
+                <ScalarProperty Name="activity_specified" ColumnName="activity_specified" />
+                <ScalarProperty Name="score_type" ColumnName="score_type" />
+                <ScalarProperty Name="scard_view" ColumnName="scard_view" />
+                <ScalarProperty Name="rub_view" ColumnName="rub_view" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="activity_specified_ds" ColumnName="activity_specified_ds" />
+                <ScalarProperty Name="dist_source_asmt_id" ColumnName="dist_source_asmt_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+                <ScalarProperty Name="enable_activity" ColumnName="enable_activity" />
+                <ScalarProperty Name="default_distribution_id" ColumnName="default_distribution_id" />
+                <ScalarProperty Name="current_version" ColumnName="current_version" />
+                <ScalarProperty Name="student_self_asmt_enabled" ColumnName="student_self_asmt_enabled" />
+                <ScalarProperty Name="is_dla" ColumnName="is_dla" />
+                <ScalarProperty Name="use_activity_benchmark" ColumnName="use_activity_benchmark" />
+                <ScalarProperty Name="passing_score" ColumnName="passing_score" />
+                <ScalarProperty Name="cascade_status" ColumnName="cascade_status" />
+                <ScalarProperty Name="disabled_by_scoring_setting" ColumnName="disabled_by_scoring_setting" />
+                <ScalarProperty Name="sloList" ColumnName="sloList" />
+                <ScalarProperty Name="sloCount" ColumnName="sloCount" />
+                <ScalarProperty Name="is_portfolio" ColumnName="is_portfolio" />
+                <ScalarProperty Name="portfolio_template_id" ColumnName="portfolio_template_id" />
+                <ScalarProperty Name="is_multi_rater" ColumnName="is_multi_rater" />
+                <ScalarProperty Name="is_allow_annotations" ColumnName="is_allow_annotations" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asmt_mastery_level">
+            <EntityTypeMapping TypeName="elumenModel.asmt_mastery_level">
+              <MappingFragment StoreEntitySet="asmt_mastery_level">
+                <ScalarProperty Name="asmt_mastery_level_id" ColumnName="asmt_mastery_level_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ds" ColumnName="ds" />
+                <ScalarProperty Name="display_seq" ColumnName="display_seq" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="not_applicable" ColumnName="not_applicable" />
+                <ScalarProperty Name="C_src_scale_lvl_id" ColumnName="_src_scale_lvl_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asmt_perf_description">
+            <EntityTypeMapping TypeName="elumenModel.asmt_perf_description">
+              <MappingFragment StoreEntitySet="asmt_perf_description">
+                <ScalarProperty Name="asmt_perf_description_id" ColumnName="asmt_perf_description_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="asmt_score_level_id" ColumnName="asmt_score_level_id" />
+                <ScalarProperty Name="asmt_criteria_id" ColumnName="asmt_criteria_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="asmt_slo_criteria_id" ColumnName="asmt_slo_criteria_id" />
+                <ScalarProperty Name="C_was_unused_sa" ColumnName="_was_unused_sa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asmt_perf_ds_default">
+            <EntityTypeMapping TypeName="elumenModel.asmt_perf_ds_default">
+              <MappingFragment StoreEntitySet="asmt_perf_ds_default">
+                <ScalarProperty Name="asmt_perf_ds_default_id" ColumnName="asmt_perf_ds_default_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="asmt_score_level_id" ColumnName="asmt_score_level_id" />
+                <ScalarProperty Name="slo_id" ColumnName="slo_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asmt_rubric_type">
+            <EntityTypeMapping TypeName="elumenModel.asmt_rubric_type">
+              <MappingFragment StoreEntitySet="asmt_rubric_type">
+                <ScalarProperty Name="asmt_rubric_type_id" ColumnName="asmt_rubric_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ds" ColumnName="ds" />
+                <ScalarProperty Name="multiple_slo" ColumnName="multiple_slo" />
+                <ScalarProperty Name="direct_slo_score" ColumnName="direct_slo_score" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asmt_scale">
+            <EntityTypeMapping TypeName="elumenModel.asmt_scale">
+              <MappingFragment StoreEntitySet="asmt_scale">
+                <ScalarProperty Name="asmt_scale_id" ColumnName="asmt_scale_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="cardinality" ColumnName="cardinality" />
+                <ScalarProperty Name="scale_type" ColumnName="scale_type" />
+                <ScalarProperty Name="top_number_scale" ColumnName="top_number_scale" />
+                <ScalarProperty Name="rounding_method" ColumnName="rounding_method" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="use_not_applicable" ColumnName="use_not_applicable" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="zero_based_scores" ColumnName="zero_based_scores" />
+                <ScalarProperty Name="is_default" ColumnName="is_default" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asmt_score_level">
+            <EntityTypeMapping TypeName="elumenModel.asmt_score_level">
+              <MappingFragment StoreEntitySet="asmt_score_level">
+                <ScalarProperty Name="asmt_score_level_id" ColumnName="asmt_score_level_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ds" ColumnName="ds" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="asmt_mastery_level_id" ColumnName="asmt_mastery_level_id" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="asmt_scored_id" ColumnName="asmt_scored_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="asmt_scale_id" ColumnName="asmt_scale_id" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="not_applicable" ColumnName="not_applicable" />
+                <ScalarProperty Name="default_perf_ds" ColumnName="default_perf_ds" />
+                <ScalarProperty Name="C_src_scale_default_rubric_interp_id" ColumnName="_src_scale_default_rubric_interp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asmt_slo_criteria">
+            <EntityTypeMapping TypeName="elumenModel.asmt_slo_criteria">
+              <MappingFragment StoreEntitySet="asmt_slo_criteria">
+                <ScalarProperty Name="asmt_slo_criteria_id" ColumnName="asmt_slo_criteria_id" />
+                <ScalarProperty Name="asmt_scored_id" ColumnName="asmt_scored_id" />
+                <ScalarProperty Name="slo_id" ColumnName="slo_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="C_src_scale_id" ColumnName="_src_scale_id" />
+                <ScalarProperty Name="C_was_unused_sa" ColumnName="_was_unused_sa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="new_course">
+            <EntityTypeMapping TypeName="elumenModel.new_course">
+              <MappingFragment StoreEntitySet="new_course">
+                <ScalarProperty Name="new_course_id" ColumnName="new_course_id" />
+                <ScalarProperty Name="new_course_atid" ColumnName="new_course_atid" />
+                <ScalarProperty Name="previous_new_course_id" ColumnName="previous_new_course_id" />
+                <ScalarProperty Name="current_flag" ColumnName="current_flag" />
+                <ScalarProperty Name="is_latest" ColumnName="is_latest" />
+                <ScalarProperty Name="starting_term_id" ColumnName="starting_term_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="short_title" ColumnName="short_title" />
+                <ScalarProperty Name="ds" ColumnName="ds" />
+                <ScalarProperty Name="recommended_enrollment" ColumnName="recommended_enrollment" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="org_entity_id" ColumnName="org_entity_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="inactive_flag" ColumnName="inactive_flag" />
+                <ScalarProperty Name="new_course_type_id" ColumnName="new_course_type_id" />
+                <ScalarProperty Name="num_credits" ColumnName="num_credits" />
+                <ScalarProperty Name="eligible_for_audit" ColumnName="eligible_for_audit" />
+                <ScalarProperty Name="course_duration_minimum" ColumnName="course_duration_minimum" />
+                <ScalarProperty Name="course_duration_maximum" ColumnName="course_duration_maximum" />
+                <ScalarProperty Name="retake_policy" ColumnName="retake_policy" />
+                <ScalarProperty Name="retake_policy_description" ColumnName="retake_policy_description" />
+                <ScalarProperty Name="transferability_id" ColumnName="transferability_id" />
+                <ScalarProperty Name="comparable_course" ColumnName="comparable_course" />
+                <ScalarProperty Name="is_credit_by_exam" ColumnName="is_credit_by_exam" />
+                <ScalarProperty Name="master_discipline_preferred_id" ColumnName="master_discipline_preferred_id" />
+                <ScalarProperty Name="alternate_master_discipline_id" ColumnName="alternate_master_discipline_id" />
+                <ScalarProperty Name="additional_non_master_discipline_id" ColumnName="additional_non_master_discipline_id" />
+                <ScalarProperty Name="lecture_hours" ColumnName="lecture_hours" />
+                <ScalarProperty Name="distance_ed_hours" ColumnName="distance_ed_hours" />
+                <ScalarProperty Name="homework_hours" ColumnName="homework_hours" />
+                <ScalarProperty Name="work_based_learning_hours" ColumnName="work_based_learning_hours" />
+                <ScalarProperty Name="clinical_hours" ColumnName="clinical_hours" />
+                <ScalarProperty Name="field_trip_hours" ColumnName="field_trip_hours" />
+                <ScalarProperty Name="lab_hours" ColumnName="lab_hours" />
+                <ScalarProperty Name="other_hours" ColumnName="other_hours" />
+                <ScalarProperty Name="max_other_hours" ColumnName="max_other_hours" />
+                <ScalarProperty Name="certifications" ColumnName="certifications" />
+                <ScalarProperty Name="additional_master_discipline_id" ColumnName="additional_master_discipline_id" />
+                <ScalarProperty Name="notes_for_students" ColumnName="notes_for_students" />
+                <ScalarProperty Name="course_outline_free_text" ColumnName="course_outline_free_text" />
+                <ScalarProperty Name="me_homework" ColumnName="me_homework" />
+                <ScalarProperty Name="me_tests" ColumnName="me_tests" />
+                <ScalarProperty Name="me_final_exam" ColumnName="me_final_exam" />
+                <ScalarProperty Name="me_project" ColumnName="me_project" />
+                <ScalarProperty Name="me_participation" ColumnName="me_participation" />
+                <ScalarProperty Name="me_description" ColumnName="me_description" />
+                <ScalarProperty Name="equipment_needed" ColumnName="equipment_needed" />
+                <ScalarProperty Name="methods_of_instruction" ColumnName="methods_of_instruction" />
+                <ScalarProperty Name="out_of_class_assignments" ColumnName="out_of_class_assignments" />
+                <ScalarProperty Name="object_type" ColumnName="object_type" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="course_subject" ColumnName="course_subject" />
+                <ScalarProperty Name="course_number" ColumnName="course_number" />
+                <ScalarProperty Name="course_suffix" ColumnName="course_suffix" />
+                <ScalarProperty Name="course_control_number" ColumnName="course_control_number" />
+                <ScalarProperty Name="old_course_id" ColumnName="old_course_id" />
+                <ScalarProperty Name="old_context_id" ColumnName="old_context_id" />
+                <ScalarProperty Name="C_src_course_id" ColumnName="_src_course_id" />
+                <ScalarProperty Name="C_src_ssa_id" ColumnName="_src_ssa_id" />
+                <ScalarProperty Name="has_coordinator" ColumnName="has_coordinator" />
+                <ScalarProperty Name="coordinator_manage_courses" ColumnName="coordinator_manage_courses" />
+                <ScalarProperty Name="coordinator_manage_evaluators" ColumnName="coordinator_manage_evaluators" />
+                <ScalarProperty Name="coordinator_manage_collective" ColumnName="coordinator_manage_collective" />
+                <ScalarProperty Name="top_code" ColumnName="top_code" />
+                <ScalarProperty Name="top_name" ColumnName="top_name" />
+                <ScalarProperty Name="cip_code" ColumnName="cip_code" />
+                <ScalarProperty Name="cip_name" ColumnName="cip_name" />
+                <ScalarProperty Name="sam_code_id" ColumnName="sam_code_id" />
+                <ScalarProperty Name="was_shared" ColumnName="was_shared" />
+                <ScalarProperty Name="max_lecture_hours" ColumnName="max_lecture_hours" />
+                <ScalarProperty Name="max_lab_hours" ColumnName="max_lab_hours" />
+                <ScalarProperty Name="ttl_lecture_hours" ColumnName="ttl_lecture_hours" />
+                <ScalarProperty Name="ttl_max_lecture_hours" ColumnName="ttl_max_lecture_hours" />
+                <ScalarProperty Name="ttl_lab_hours" ColumnName="ttl_lab_hours" />
+                <ScalarProperty Name="ttl_max_lab_hours" ColumnName="ttl_max_lab_hours" />
+                <ScalarProperty Name="requested_start_semester" ColumnName="requested_start_semester" />
+                <ScalarProperty Name="requested_start_year" ColumnName="requested_start_year" />
+                <ScalarProperty Name="uc_approval_semester" ColumnName="uc_approval_semester" />
+                <ScalarProperty Name="uc_approval_year" ColumnName="uc_approval_year" />
+                <ScalarProperty Name="csu_approval_semester" ColumnName="csu_approval_semester" />
+                <ScalarProperty Name="csu_approval_year" ColumnName="csu_approval_year" />
+                <ScalarProperty Name="csu_ge_approval_semester" ColumnName="csu_ge_approval_semester" />
+                <ScalarProperty Name="csu_ge_approval_year" ColumnName="csu_ge_approval_year" />
+                <ScalarProperty Name="igetc_semester" ColumnName="igetc_semester" />
+                <ScalarProperty Name="igetc_year" ColumnName="igetc_year" />
+                <ScalarProperty Name="is_comments" ColumnName="is_comments" />
+                <ScalarProperty Name="history" ColumnName="history" />
+                <ScalarProperty Name="impact_cert_text" ColumnName="impact_cert_text" />
+                <ScalarProperty Name="impact_class_text" ColumnName="impact_class_text" />
+                <ScalarProperty Name="advisory_committee_recommended" ColumnName="advisory_committee_recommended" />
+                <ScalarProperty Name="advisory_recommended_date" ColumnName="advisory_recommended_date" />
+                <ScalarProperty Name="field_trip_requirement" ColumnName="field_trip_requirement" />
+                <ScalarProperty Name="recommended_enrollment_justification" ColumnName="recommended_enrollment_justification" />
+                <ScalarProperty Name="retake_policy_justification" ColumnName="retake_policy_justification" />
+                <ScalarProperty Name="starting_term_justification" ColumnName="starting_term_justification" />
+                <ScalarProperty Name="unit_hrs" ColumnName="unit_hrs" />
+                <ScalarProperty Name="max_unit_hrs" ColumnName="max_unit_hrs" />
+                <ScalarProperty Name="credit_hrs" ColumnName="credit_hrs" />
+                <ScalarProperty Name="max_credit_hrs" ColumnName="max_credit_hrs" />
+                <ScalarProperty Name="student_population" ColumnName="student_population" />
+                <ScalarProperty Name="course_workflow_json_history_id" ColumnName="course_workflow_json_history_id" />
+                <ScalarProperty Name="course_delivery_type" ColumnName="course_delivery_type" />
+                <ScalarProperty Name="max_num_credits" ColumnName="max_num_credits" />
+                <ScalarProperty Name="min_num_credits" ColumnName="min_num_credits" />
+                <ScalarProperty Name="cb12" ColumnName="cb12" />
+                <ScalarProperty Name="can_code" ColumnName="can_code" />
+                <ScalarProperty Name="can_seq_code" ColumnName="can_seq_code" />
+                <ScalarProperty Name="cb16" ColumnName="cb16" />
+                <ScalarProperty Name="cb17" ColumnName="cb17" />
+                <ScalarProperty Name="cb18" ColumnName="cb18" />
+                <ScalarProperty Name="crosswalk_course_dept" ColumnName="crosswalk_course_dept" />
+                <ScalarProperty Name="crosswalk_course_number" ColumnName="crosswalk_course_number" />
+                <ScalarProperty Name="time_for_review_quantity" ColumnName="time_for_review_quantity" />
+                <ScalarProperty Name="time_for_review_measure" ColumnName="time_for_review_measure" />
+                <ScalarProperty Name="approved_date" ColumnName="approved_date" />
+                <ScalarProperty Name="course_uuid" ColumnName="course_uuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sloes">
+            <EntityTypeMapping TypeName="elumenModel.slo">
+              <MappingFragment StoreEntitySet="slo">
+                <ScalarProperty Name="slo_id" ColumnName="slo_id" />
+                <ScalarProperty Name="slo_atid" ColumnName="slo_atid" />
+                <ScalarProperty Name="previous_slo_id" ColumnName="previous_slo_id" />
+                <ScalarProperty Name="current_flag" ColumnName="current_flag" />
+                <ScalarProperty Name="is_latest" ColumnName="is_latest" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="performance" ColumnName="performance" />
+                <ScalarProperty Name="starting_term_id" ColumnName="starting_term_id" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="owner_org_entity_id" ColumnName="owner_org_entity_id" />
+                <ScalarProperty Name="slo_type_id" ColumnName="slo_type_id" />
+                <ScalarProperty Name="slo_outcome_level_id" ColumnName="slo_outcome_level_id" />
+                <ScalarProperty Name="slo_category_id" ColumnName="slo_category_id" />
+                <ScalarProperty Name="new_course_id" ColumnName="new_course_id" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="C_src_aa_id" ColumnName="_src_aa_id" />
+                <ScalarProperty Name="C_src_ag_id" ColumnName="_src_ag_id" />
+                <ScalarProperty Name="C_src_bmg_id" ColumnName="_src_bmg_id" />
+                <ScalarProperty Name="C_src_bm_id" ColumnName="_src_bm_id" />
+                <ScalarProperty Name="C_src_bmc_id" ColumnName="_src_bmc_id" />
+                <ScalarProperty Name="C_src_ca_id" ColumnName="_src_ca_id" />
+                <ScalarProperty Name="C_src_cip_id" ColumnName="_src_cip_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slo_asmt_scale">
+            <EntityTypeMapping TypeName="elumenModel.slo_asmt_scale">
+              <MappingFragment StoreEntitySet="slo_asmt_scale">
+                <ScalarProperty Name="slo_asmt_scale_id" ColumnName="slo_asmt_scale_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="display_seq" ColumnName="display_seq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slo_category">
+            <EntityTypeMapping TypeName="elumenModel.slo_category">
+              <MappingFragment StoreEntitySet="slo_category">
+                <ScalarProperty Name="slo_category_id" ColumnName="slo_category_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="owner_org_entity_id" ColumnName="owner_org_entity_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="slo_outcome_level_id" ColumnName="slo_outcome_level_id" />
+                <ScalarProperty Name="slo_class_id" ColumnName="slo_class_id" />
+                <ScalarProperty Name="C_src_bm_id" ColumnName="_src_bm_id" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slo_class">
+            <EntityTypeMapping TypeName="elumenModel.slo_class">
+              <MappingFragment StoreEntitySet="slo_class">
+                <ScalarProperty Name="slo_class_id" ColumnName="slo_class_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ds" ColumnName="ds" />
+                <ScalarProperty Name="mission_stm" ColumnName="mission_stm" />
+                <ScalarProperty Name="org_entity_id" ColumnName="org_entity_id" />
+                <ScalarProperty Name="slo_outcome_level_id" ColumnName="slo_outcome_level_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+                <ScalarProperty Name="bool_cert_and_deg" ColumnName="bool_cert_and_deg" />
+                <ScalarProperty Name="bool_standards_body" ColumnName="bool_standards_body" />
+                <ScalarProperty Name="standards_body_ds" ColumnName="standards_body_ds" />
+                <ScalarProperty Name="use_category" ColumnName="use_category" />
+                <ScalarProperty Name="is_third_party_standard_set" ColumnName="is_third_party_standard_set" />
+                <ScalarProperty Name="is_gen_ed" ColumnName="is_gen_ed" />
+                <ScalarProperty Name="owner_credential" ColumnName="owner_credential" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="asmt_slo_rel" TypeName="elumenModel.asmt_slo_rel" StoreEntitySet="asmt_slo_rel">
+            <EndProperty Name="asmt">
+              <ScalarProperty Name="asmt_id" ColumnName="asmt_id" />
+            </EndProperty>
+            <EndProperty Name="slo">
+              <ScalarProperty Name="slo_id" ColumnName="slo_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="credentials">
+            <EntityTypeMapping TypeName="elumenModel.credential">
+              <MappingFragment StoreEntitySet="credential">
+                <ScalarProperty Name="top_code" ColumnName="top_code" />
+                <ScalarProperty Name="C_external_credential_id" ColumnName="_external_credential_id" />
+                <ScalarProperty Name="program_mode" ColumnName="program_mode" />
+                <ScalarProperty Name="transferability_id" ColumnName="transferability_id" />
+                <ScalarProperty Name="org_entity_id" ColumnName="org_entity_id" />
+                <ScalarProperty Name="active_flag" ColumnName="active_flag" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="lst_mod_dt" ColumnName="lst_mod_dt" />
+                <ScalarProperty Name="lst_mod_user_id" ColumnName="lst_mod_user_id" />
+                <ScalarProperty Name="ds" ColumnName="ds" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="credential_type_id" ColumnName="credential_type_id" />
+                <ScalarProperty Name="starting_term_id" ColumnName="starting_term_id" />
+                <ScalarProperty Name="is_latest" ColumnName="is_latest" />
+                <ScalarProperty Name="current_flag" ColumnName="current_flag" />
+                <ScalarProperty Name="previous_credential_id" ColumnName="previous_credential_id" />
+                <ScalarProperty Name="credential_atid" ColumnName="credential_atid" />
+                <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
